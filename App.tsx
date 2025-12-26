@@ -5,12 +5,12 @@
  * @format
  */
 
-import BootSplash from "react-native-bootsplash";
-import { StatusBar, Text, useColorScheme } from 'react-native';
-import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
+import BootSplash from 'react-native-bootsplash';
+import { StatusBar, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { TabNavigation } from './src/navigation/TabNavigation';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,10 +26,12 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Text>tes</Text>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <TabNavigation />
+      </SafeAreaProvider>
+    </NavigationContainer>
   );
 }
 
